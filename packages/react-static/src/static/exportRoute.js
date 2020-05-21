@@ -251,7 +251,11 @@ export default (async function exportRoute({
 
   html = html.replace(srcReplace, `$1${publicPath}$3`)
 
-  const htmlFilename = nodePath.join(config.paths.DIST, route.path, 'index.html')
+  const htmlFilename = nodePath.join(
+    config.paths.DIST,
+    route.path,
+    'index.html'
+  )
 
   let res
   if (route.path === '404') {
@@ -269,7 +273,7 @@ export default (async function exportRoute({
         : Promise.resolve(),
     ])
   } else {
-    res = await Promise.all([ fs.outputFile(htmlFilename, html) ])
+    res = await Promise.all([fs.outputFile(htmlFilename, html)])
   }
 
   return res
